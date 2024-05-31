@@ -8,14 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var selectedIndex: Int = 0
+    
+    var currentTab: Tab {
+        Tab(rawValue: selectedIndex) ?? .one
+    }
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack(alignment: .bottom) {
+            Text(currentTab.text)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .ignoresSafeArea()
+                .animation(.easeInOut(duration: 0.1), value: selectedIndex)
+            
+            TabBarView(
+                tabbarItems: Tab.allCases.map({ $0.text }),
+                selectedIndex: $selectedIndex
+            )
+            .padding(.horizontal)
         }
-        .padding()
     }
 }
 
