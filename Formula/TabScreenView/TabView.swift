@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TabBarView: View {
-    var tabbarItems: [String]
+    var tabBarItems: [TabBarItemVieModel]
     
     @Binding var selectedIndex: Int
     @Namespace private var menuItemTransition
@@ -17,9 +17,9 @@ struct TabBarView: View {
         ScrollViewReader { scrollView in
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    ForEach(tabbarItems.indices, id: \.self) { index in
-                        TabbarItem(
-                            name: tabbarItems[index],
+                    ForEach(tabBarItems.indices, id: \.self) { index in
+                        TabBarItem(
+                            model: tabBarItems[index],
                             isActive: selectedIndex == index,
                             namespace: menuItemTransition
                         )
@@ -30,8 +30,8 @@ struct TabBarView: View {
                         }
                     }
                 }
+                .padding(10)
             }
-            .padding()
             .background(Color(.systemGray6))
             .cornerRadius(25)
             .onChange(of: selectedIndex) { index in
@@ -45,6 +45,6 @@ struct TabBarView: View {
 }
 
 #Preview {
-    let tabs = ["One", "Two", "Three", "Four", "Five", "Six"]
-    return TabBarView(tabbarItems: tabs, selectedIndex: .constant(2)).padding()
+    let tabs = Tab.allCases.map({ TabBarItemVieModel(tab: $0)})
+    return TabBarView(tabBarItems: tabs, selectedIndex: .constant(2)).padding()
 }

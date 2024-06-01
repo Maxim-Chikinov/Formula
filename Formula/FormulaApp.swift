@@ -11,7 +11,7 @@ import SwiftUI
 struct FormulaApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabBarScreenView()
         }
     }
 }
