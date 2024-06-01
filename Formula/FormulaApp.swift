@@ -15,3 +15,7 @@ struct FormulaApp: App {
         }
     }
 }
+
+#Preview(body: {
+    TabBarScreenView()
+})

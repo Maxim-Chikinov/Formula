@@ -8,21 +8,33 @@
 import SwiftUI
 
 struct MainScreenView: View {
-    @State var counter: Int = 0
+    @StateObject var model: MainViewModel
+    @State var showError = false
+    @State var lastError: String?
     
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Count \(counter)")
-            
-            Button(action: {
-                counter += 1
-            }, label: {
-                Text("Increment")
-            })
+        NavigationView {
+            ScrollView {
+                RecipesList(model: model)
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 60, trailing: 0))
+            }
+            .navigationTitle("Recipes List")
         }
+        .task {
+            do {
+                try await model.getRecipes()
+            } catch {
+                lastError = "\(error.localizedDescription)"
+                showError.toggle()
+            }
+        }
+        .alert(lastError ?? "", isPresented: $showError) {}
     }
 }
 
 #Preview {
-    MainScreenView()
+    let model = MainViewModel()
+    model.setTestData()
+    let view = MainScreenView(model: model)
+    return view
 }

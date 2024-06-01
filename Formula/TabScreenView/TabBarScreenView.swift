@@ -19,7 +19,7 @@ struct TabBarScreenView: View {
             
             // Screens
             TabView(selection: $selectedIndex, content: {
-                MainScreenView()
+                MainScreenView(model: MainViewModel())
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .ignoresSafeArea()
                     .tag(Tab.main.rawValue)
@@ -46,6 +46,10 @@ struct TabBarScreenView: View {
             TabBarView(tabBarItems: tabs, selectedIndex: $selectedIndex)
                 .padding(.horizontal)
         }
+    }
+    
+    init() {
+        UITabBar.appearance().isHidden = true
     }
 }
 
