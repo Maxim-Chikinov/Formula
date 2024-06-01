@@ -6,28 +6,27 @@
 //
 
 import SwiftUI
+import NukeUI
 
 struct RecipeCard: View {
     var recipe: RecipeSearchResult.Recipe
     
     var body: some View {
         VStack(spacing: 8) {
-            AsyncImage(url: URL(string: recipe.image)) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(height: 80, alignment: .center)
-                    .cornerRadius(6)
-            } placeholder: {
-                ZStack {
-                    Rectangle()
-                        .foregroundColor(.white.opacity(0.3))
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: Color.white))
-                        .progressViewStyle(.circular)
+            LazyImage(
+                url: URL(string: recipe.image),
+                transaction: Transaction(animation: .default)) { state in
+                    if let image = state.image {
+                      image
+                        .resizable()
+                        .scaledToFill()
+                    } else {
+                        Rectangle().fill(Color.black.opacity(0.1))
+                    }
                 }
-                .frame(height: 80, alignment: .center)
-            }
+                .frame(height: 80)
+                .clipped()
+                .cornerRadius(12)
             
             Text(recipe.label)
                 .font(.headline)
@@ -57,7 +56,7 @@ struct RecipeCard: View {
 
 #Preview {
     var model = RecipeSearchResult.Recipe.init()
-    model.image = ""
+    model.image = "https://wallpapers.com/images/hd/healthy-food-background-chh9nlqxwcyl1t06.jpg"
     model.label = "Some recipe label"
     model.healthLabels = ["Some", "recipe", "label"]
     return RecipeCard(recipe: model)
