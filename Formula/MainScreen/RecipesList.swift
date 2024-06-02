@@ -16,7 +16,7 @@ struct RecipesList: View {
     var body: some View {
         if model.recipesList.count > 0 {
             LazyVGrid(columns: columns) {
-                ForEach(model.recipesList, id: \.shareAs) { recipe in
+                ForEach(model.recipesList, id: \.id) { recipe in
                     RecipeCard(recipe: recipe)
                 }
             }
@@ -30,6 +30,7 @@ struct RecipesList: View {
             })
         } else {
             ProgressView()
+                .frame(width: 500, height: 500)
         }
     }
 }

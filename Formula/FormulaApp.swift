@@ -11,7 +11,8 @@ import SwiftUI
 struct FormulaApp: App {
     var body: some Scene {
         WindowGroup {
-            TabBarScreenView()
+            let storage = Storage()
+            TabBarScreenView().environmentObject(storage)
         }
     }
 }

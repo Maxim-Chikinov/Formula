@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainScreenView: View {
+    @EnvironmentObject var storage: Storage
     @StateObject var model: MainViewModel
     @State var showError = false
     @State var lastError: String?
@@ -18,6 +19,7 @@ struct MainScreenView: View {
                 RecipesList(model: model)
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 60, trailing: 0))
             }
+            .background(storage.theame == 0 ? Color.white : Color.black.opacity(0.9))
             .navigationTitle("Recipes List")
         }
         .task {
