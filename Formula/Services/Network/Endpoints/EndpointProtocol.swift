@@ -16,7 +16,7 @@ protocol EndpointProtocol {
     
     var absoluteURL: String { get }
     
-    var params: [String: String] { get }
+    var params: [String: String]? { get }
     
     var headers: [String: String] { get }
 }

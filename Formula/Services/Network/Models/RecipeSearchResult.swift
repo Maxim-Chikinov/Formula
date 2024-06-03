@@ -16,13 +16,39 @@ struct RecipeSearchResult: Decodable, Identifiable {
     let from: Int
     let to: Int
     let count: Int
+    let links: Links
     let hits: [Hit]
     
     init() {
         from = 0
         to = 0
         count = 0
+        links = Links()
         hits = []
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case from
+        case to
+        case count
+        case links = "_links"
+        case hits
+    }
+    
+    struct Links: Decodable {
+        struct Next: Decodable {
+            var nextPageUrl: String = ""
+            
+            enum CodingKeys: String, CodingKey {
+                case nextPageUrl = "href"
+            }
+        }
+        
+        var next: Next?
+        
+        enum CodingKeys: String, CodingKey {
+            case next = "next"
+        }
     }
     
     struct Hit: Decodable, Identifiable {
@@ -32,9 +58,13 @@ struct RecipeSearchResult: Decodable, Identifiable {
         }
         
         var recipe: Recipe
+        
+        enum CodingKeys: String, CodingKey {
+            case recipe
+        }
     }
     
-    struct Recipe: Decodable, Identifiable {
+    struct Recipe: Decodable, Identifiable, Equatable {
         
         var id: String {
             shareAs
@@ -50,6 +80,13 @@ struct RecipeSearchResult: Decodable, Identifiable {
             image = ""
             shareAs = ""
             healthLabels = []
+        }
+        
+        enum CodingKeys: String, CodingKey {
+            case label
+            case image
+            case shareAs
+            case healthLabels
         }
     }
 }

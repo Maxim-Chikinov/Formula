@@ -9,6 +9,7 @@ import Foundation
 
 enum RecipesEndpoint: EndpointProtocol {
     case searchForRecipes(searchFilter: String)
+    case searchNextPage(URL)
     
     var baseURL: String {
         return "https://api.edamam.com"
@@ -18,6 +19,8 @@ enum RecipesEndpoint: EndpointProtocol {
         switch self {
         case .searchForRecipes:
             return baseURL + "/api/recipes/v2"
+        case .searchNextPage(let url):
+            return url.absoluteString
         }
     }
     
@@ -29,12 +32,14 @@ enum RecipesEndpoint: EndpointProtocol {
         ]
     }
     
-    var params: [String: String] {
+    var params: [String: String]? {
         switch self {
         case .searchForRecipes(let searchFilter):
             var params = defaultParams
             params["q"] = searchFilter
             return params
+        case .searchNextPage(_):
+            return nil
         }
     }
     

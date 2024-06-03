@@ -8,33 +8,44 @@
 import SwiftUI
 
 struct RecipesList: View {
-    @ObservedObject var model: MainViewModel
+    @ObservedObject var model: MainScreenViewModel
+    let onScrolledAtBottom: () -> Void
+    let isLoading: Bool
     @State private var startAnimation = false
     
     var columns = [GridItem(.adaptive(minimum: 160), spacing: 15)]
     
     var body: some View {
-        if model.recipesList.count > 0 {
-            LazyVGrid(columns: columns) {
-                ForEach(model.recipesList, id: \.id) { recipe in
-                    RecipeCard(recipe: recipe)
+        if model.state.recipesList.count != 0 {
+            VStack {
+                LazyVGrid(columns: columns) {
+                    ForEach(model.state.recipesList, id: \.id) { recipe in
+                        RecipeCard(recipe: recipe).onAppear {
+                            if model.state.recipesList.last == recipe {
+                                onScrolledAtBottom()
+                            }
+                        }
+                    }
+                }
+                .opacity(startAnimation ? 1 : 0)
+                .offset(CGSize(width: 0, height: startAnimation ? 0 : -20))
+                .padding(.horizontal, 20)
+                .padding(.bottom, 20)
+                .animation(.bouncy, value: startAnimation)
+                .onAppear(perform: {
+                    startAnimation = true
+                })
+                
+                if isLoading {
+                    ProgressView()
                 }
             }
-            .opacity(startAnimation ? 1 : 0)
-            .offset(CGSize(width: 0, height: startAnimation ? 0 : -20))
-            .padding(.horizontal, 20)
-            .padding(.bottom, 20)
-            .animation(.bouncy, value: startAnimation)
-            .onAppear(perform: {
-                startAnimation = true
-            })
         } else {
-            ProgressView()
-                .frame(width: 500, height: 500)
+            ProgressView().frame(width: 500, height: 500)
         }
     }
 }
 
 #Preview {
-    RecipesList(model: MainViewModel())
+    RecipesList(model: MainScreenViewModel(), onScrolledAtBottom: {}, isLoading: true)
 }

@@ -19,7 +19,7 @@ struct TabBarScreenView: View {
             
             // Screens
             TabView(selection: $selectedIndex, content: {
-                MainScreenView(model: MainViewModel())
+                MainScreenView(model: MainScreenViewModel())
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .ignoresSafeArea()
                     .tag(Tab.main.rawValue)
