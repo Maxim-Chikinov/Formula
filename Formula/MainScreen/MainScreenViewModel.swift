@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@MainActor
 final class MainScreenViewModel: ObservableObject {
     struct State {
         var response: RecipeSearchResult = .init()
@@ -18,14 +17,16 @@ final class MainScreenViewModel: ObservableObject {
     
     @Published private(set) var state = State()
     
-    private let apiProvider = APIProvider<RecipesEndpoint>()
+    private let apiProvider: any APIProviderProtocol<RecipesEndpoint>
     
-    init() {}
+    init(apiProvider: any APIProviderProtocol<RecipesEndpoint>) {
+        self.apiProvider = apiProvider
+    }
     
     func fetchRecipes(searchFilter: String, from: Int = 0) async throws {
         let data = try await apiProvider.getData(from: .searchForRecipes(searchFilter: searchFilter))
         let decodedResponse = try JSONDecoder().decode(RecipeSearchResult.self, from: data)
-        onReceive(decodedResponse)
+        await onReceive(decodedResponse)
     }
     
     func fetchNextPage() async throws {
@@ -38,9 +39,10 @@ final class MainScreenViewModel: ObservableObject {
         }
         let data = try await apiProvider.getData(from: .searchNextPage(url))
         let decodedResponse = try JSONDecoder().decode(RecipeSearchResult.self, from: data)
-        onReceive(decodedResponse)
+        await onReceive(decodedResponse)
     }
     
+    @MainActor
     private func onReceive(_ response: RecipeSearchResult) {
         let batch = response.hits.map({ $0.recipe })
         state.response = response
@@ -51,7 +53,7 @@ final class MainScreenViewModel: ObservableObject {
     
     func setTestData() {
         #if DEBUG
-        state.recipesList = [] // TODO: Add test models
+        state.recipesList = [.init()] // TODO: Add test models
         #endif
     }
 }

@@ -100,7 +100,8 @@ private extension MainScreenView {
 }
 
 #Preview {
-    let model = MainScreenViewModel()
+    let apiProvider = APIProvider<RecipesEndpoint>()
+    let model = MainScreenViewModel(apiProvider: apiProvider)
     model.setTestData()
     let view = MainScreenView(model: model).environmentObject(Storage())
     return view
