@@ -6,16 +6,27 @@
 //
 
 import SwiftUI
+import ActivityKit
 
 struct MainScreenView: View {
     @EnvironmentObject var storage: Storage
     @StateObject var model: MainScreenViewModel
     @State var showError = false
     @State var lastError: String?
+    @State var activity: Activity<FormulaAttributes>?
     
     var body: some View {
         NavigationView {
             ScrollView {
+                Button(action: {
+                    if let activity {
+                        updateActivity()
+                    } else {
+                        activity = startActivity()                        
+                    }
+                }, label: {
+                    Text("Start Activity")
+                })
                 RecipesList(
                     model: model,
                     onScrolledAtBottom: {
@@ -51,9 +62,46 @@ struct MainScreenView: View {
     }
 }
 
+private extension MainScreenView {
+    func startActivity() -> Activity<FormulaAttributes>? {
+        var activity: Activity<FormulaAttributes>?
+        let attributes = FormulaAttributes(lastPlaceDriver: "Nicholas Latifi")
+        
+        do {
+            let contentState = FormulaAttributes.ContentState(
+                driverInFront: "Max Verstappen",
+                driverTeam: "Red Bull racing"
+            )
+            activity = try Activity<FormulaAttributes>.request(attributes: attributes, contentState: contentState)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        return activity
+    }
+    
+    func updateActivity() {
+        Task {
+            let contentState = FormulaAttributes.ContentState(
+                driverInFront: "not Lewis Hamilton",
+                driverTeam: "Mercedes"
+            )
+            await activity?.update(using: contentState)
+        }
+    }
+    
+    func endActivity() {
+        Task {
+            for activity in Activity<FormulaAttributes>.activities {
+                await activity.end(dismissalPolicy: .immediate)
+            }
+        }
+    }
+}
+
 #Preview {
     let model = MainScreenViewModel()
     model.setTestData()
-    let view = MainScreenView(model: model)
+    let view = MainScreenView(model: model).environmentObject(Storage())
     return view
 }

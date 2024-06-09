@@ -18,5 +18,5 @@ struct FormulaApp: App {
 }
 
 #Preview(body: {
-    TabBarScreenView()
+    TabBarScreenView().environmentObject(Storage())
 })
