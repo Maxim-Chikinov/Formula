@@ -10,6 +10,8 @@ import SwiftUI
 struct TabBarScreenView: View {
     @State var selectedIndex: Int = 0
     
+    let searchRecipesProvider = APIProvider<RecipesEndpoint>()
+    
     var currentTab: Tab {
         Tab(rawValue: selectedIndex) ?? .main
     }
@@ -19,7 +21,7 @@ struct TabBarScreenView: View {
             
             // Screens
             TabView(selection: $selectedIndex, content: {
-                MainScreenView(model: MainScreenViewModel())
+                MainScreenView(model: MainScreenViewModel(apiProvider: searchRecipesProvider))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .ignoresSafeArea()
                     .tag(Tab.main.rawValue)

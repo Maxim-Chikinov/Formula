@@ -47,5 +47,10 @@ struct RecipesList: View {
 }
 
 #Preview {
-    RecipesList(model: MainScreenViewModel(), onScrolledAtBottom: {}, isLoading: true)
+    let searchRecipesProvider = APIProvider<RecipesEndpoint>()
+    return RecipesList(
+        model: MainScreenViewModel(apiProvider: searchRecipesProvider),
+        onScrolledAtBottom: {},
+        isLoading: true
+    )
 }

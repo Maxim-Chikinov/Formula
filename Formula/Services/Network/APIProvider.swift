@@ -8,7 +8,14 @@
 import Foundation
 import Combine
 
-class APIProvider<Endpoint: EndpointProtocol> {
+protocol APIProviderProtocol<Endpoint> {
+    associatedtype Endpoint: EndpointProtocol
+    
+    func getData(from endpoint: Endpoint) -> AnyPublisher<Data, Error>
+    func getData(from endpoint: Endpoint) async throws -> Data
+}
+
+class APIProvider<Endpoint: EndpointProtocol>: APIProviderProtocol {
     func getData(from endpoint: Endpoint) -> AnyPublisher<Data, Error> {
         guard let request = performRequest(for: endpoint) else {
             return Fail(error: APIProviderErrors.invalidURL)
@@ -77,6 +84,25 @@ class APIProvider<Endpoint: EndpointProtocol> {
         else {
             throw APIProviderErrors.badStatusCode
         }
+        return data
+    }
+}
+
+class MOCKAPIProvider<Endpoint: EndpointProtocol>: APIProviderProtocol {
+    
+    let data: Data
+    
+    init(data: Data) {
+        self.data = data
+    }
+    
+    func getData(from endpoint: Endpoint) -> AnyPublisher<Data, Error> {
+        let justPubliser = PassthroughSubject<Data, Error>()
+        justPubliser.send(completion: .failure(APIProviderErrors.badStatusCode))
+        return justPubliser.eraseToAnyPublisher()
+    }
+    
+    func getData(from endpoint: Endpoint) async throws -> Data {
         return data
     }
 }
