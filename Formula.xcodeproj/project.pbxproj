@@ -26,6 +26,11 @@
 		E26AA2372C12EEFF00779D30 /* FormulaAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26AA2332C12EB6000779D30 /* FormulaAttributes.swift */; };
 		E26AA2382C12EF0000779D30 /* FormulaAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26AA2332C12EB6000779D30 /* FormulaAttributes.swift */; };
 		E26AA2392C12EF0000779D30 /* FormulaAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26AA2332C12EB6000779D30 /* FormulaAttributes.swift */; };
+		E297161B2C1B0806009E3D30 /* NeedleFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = E297161A2C1B0806009E3D30 /* NeedleFoundation */; };
+		E297161D2C1B0806009E3D30 /* NeedleFoundationTest in Frameworks */ = {isa = PBXBuildFile; productRef = E297161C2C1B0806009E3D30 /* NeedleFoundationTest */; };
+		E29716202C1B0D45009E3D30 /* MainScreenComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E297161F2C1B0D45009E3D30 /* MainScreenComponent.swift */; };
+		E29716222C1B1057009E3D30 /* NeedleGenerated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29716212C1B1057009E3D30 /* NeedleGenerated.swift */; };
+		E29716232C1B1057009E3D30 /* NeedleGenerated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29716212C1B1057009E3D30 /* NeedleGenerated.swift */; };
 		E2D4F8702C0BAF6900949459 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = E2D4F86F2C0BAF6900949459 /* Nuke */; };
 		E2D4F8722C0BAF6900949459 /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = E2D4F8712C0BAF6900949459 /* NukeExtensions */; };
 		E2D4F8742C0BAF6900949459 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = E2D4F8732C0BAF6900949459 /* NukeUI */; };
@@ -133,6 +138,8 @@
 		E26AA2292C12EAEA00779D30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E26AA22B2C12EAEA00779D30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E26AA2332C12EB6000779D30 /* FormulaAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormulaAttributes.swift; sourceTree = "<group>"; };
+		E297161F2C1B0D45009E3D30 /* MainScreenComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenComponent.swift; sourceTree = "<group>"; };
+		E29716212C1B1057009E3D30 /* NeedleGenerated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeedleGenerated.swift; sourceTree = "<group>"; };
 		E2D4F8772C0C597400949459 /* SettingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRow.swift; sourceTree = "<group>"; };
 		E2D4F8792C0C598F00949459 /* FeedbackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackManager.swift; sourceTree = "<group>"; };
 		E2D4F87B2C0C59FB00949459 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -176,6 +183,8 @@
 				E2D4F8702C0BAF6900949459 /* Nuke in Frameworks */,
 				E2D4F8722C0BAF6900949459 /* NukeExtensions in Frameworks */,
 				E2D4F8762C0BAF6900949459 /* NukeVideo in Frameworks */,
+				E297161D2C1B0806009E3D30 /* NeedleFoundationTest in Frameworks */,
+				E297161B2C1B0806009E3D30 /* NeedleFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +240,7 @@
 		E25CC7DE2C0A5F3B00FAD289 /* Formula */ = {
 			isa = PBXGroup;
 			children = (
+				E29716212C1B1057009E3D30 /* NeedleGenerated.swift */,
 				E25CC7DF2C0A5F3B00FAD289 /* FormulaApp.swift */,
 				E2D4F88B2C0C840100949459 /* Storage.swift */,
 				E2D5F6A12C0B429000E06E96 /* Services */,
@@ -309,6 +319,7 @@
 		E2D5F6992C0B305000E06E96 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
+				E297161F2C1B0D45009E3D30 /* MainScreenComponent.swift */,
 				E2D5F6AE2C0B45D400E06E96 /* MainScreenViewModel.swift */,
 				E2D5F68F2C0B2C8100E06E96 /* MainScreenView.swift */,
 				E2D5F6BB2C0B5BBE00E06E96 /* RecipesList.swift */,
@@ -426,6 +437,7 @@
 				E25CC7D92C0A5F3B00FAD289 /* Frameworks */,
 				E25CC7DA2C0A5F3B00FAD289 /* Resources */,
 				E26AA22F2C12EAEA00779D30 /* Embed Foundation Extensions */,
+				E297161E2C1B0926009E3D30 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -438,6 +450,8 @@
 				E2D4F8712C0BAF6900949459 /* NukeExtensions */,
 				E2D4F8732C0BAF6900949459 /* NukeUI */,
 				E2D4F8752C0BAF6900949459 /* NukeVideo */,
+				E297161A2C1B0806009E3D30 /* NeedleFoundation */,
+				E297161C2C1B0806009E3D30 /* NeedleFoundationTest */,
 			);
 			productName = Formula;
 			productReference = E25CC7DC2C0A5F3B00FAD289 /* Formula.app */;
@@ -533,7 +547,7 @@
 			mainGroup = E25CC7D32C0A5F3B00FAD289;
 			packageReferences = (
 				E2419E6D2C0BAD730032D13A /* XCRemoteSwiftPackageReference "Nuke" */,
-				E2D027882C1839B20065824F /* XCRemoteSwiftPackageReference "needle" */,
+				E29716192C1B07ED009E3D30 /* XCRemoteSwiftPackageReference "needle" */,
 			);
 			productRefGroup = E25CC7DD2C0A5F3B00FAD289 /* Products */;
 			projectDirPath = "";
@@ -581,6 +595,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E297161E2C1B0926009E3D30 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "needle generate Formula/NeedleGenerated.swift Formula/\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E25CC7D82C0A5F3B00FAD289 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -594,6 +629,7 @@
 				E2D5F6BE2C0B852100E06E96 /* URLRequest+cURL.swift in Sources */,
 				E2D5F6B62C0B47E000E06E96 /* RecipeSearchResult.swift in Sources */,
 				E2D4F88A2C0C622F00949459 /* View+Extension.swift in Sources */,
+				E29716202C1B0D45009E3D30 /* MainScreenComponent.swift in Sources */,
 				E2D5F6B32C0B46CF00E06E96 /* Container.swift in Sources */,
 				E2D4F87E2C0C5A7700949459 /* AboutView.swift in Sources */,
 				E2D4F8882C0C620500949459 /* ToggleSettingRow.swift in Sources */,
@@ -619,6 +655,7 @@
 				E2D5F6BC2C0B5BBE00E06E96 /* RecipesList.swift in Sources */,
 				E2D5F6AB2C0B43B700E06E96 /* String+Extension.swift in Sources */,
 				E2D5F6942C0B2FA400E06E96 /* NewsScreenView.swift in Sources */,
+				E29716222C1B1057009E3D30 /* NeedleGenerated.swift in Sources */,
 				E2D5F6BA2C0B4F1400E06E96 /* RecipeCell.swift in Sources */,
 				E2D4F87C2C0C59FB00949459 /* SettingsViewModel.swift in Sources */,
 			);
@@ -630,6 +667,7 @@
 			files = (
 				E2F74AA62C162FA20033D7EE /* MainScreenViewModelTests.swift in Sources */,
 				E2F74AB02C1632D30033D7EE /* Data+JSON.swift in Sources */,
+				E29716232C1B1057009E3D30 /* NeedleGenerated.swift in Sources */,
 				E2F74AAF2C1632930033D7EE /* APIProviderErrors.swift in Sources */,
 				E2F74AA82C1631C10033D7EE /* APIProvider.swift in Sources */,
 				E26AA2372C12EEFF00779D30 /* FormulaAttributes.swift in Sources */,
@@ -738,7 +776,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -795,7 +833,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -816,6 +854,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Formula/Preview Content\"";
 				DEVELOPMENT_TEAM = UPP28B77QU;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -848,6 +887,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Formula/Preview Content\"";
 				DEVELOPMENT_TEAM = UPP28B77QU;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -957,6 +997,7 @@
 				INFOPLIST_FILE = LIveWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LIveWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -984,6 +1025,7 @@
 				INFOPLIST_FILE = LIveWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LIveWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1054,21 +1096,31 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Nuke";
 			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 12.7.1;
+				kind = exactVersion;
+				version = 12.7.1;
 			};
 		};
-		E2D027882C1839B20065824F /* XCRemoteSwiftPackageReference "needle" */ = {
+		E29716192C1B07ED009E3D30 /* XCRemoteSwiftPackageReference "needle" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/uber/needle";
+			repositoryURL = "https://github.com/uber/needle.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = exactVersion;
+				version = 0.24.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E297161A2C1B0806009E3D30 /* NeedleFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E29716192C1B07ED009E3D30 /* XCRemoteSwiftPackageReference "needle" */;
+			productName = NeedleFoundation;
+		};
+		E297161C2C1B0806009E3D30 /* NeedleFoundationTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E29716192C1B07ED009E3D30 /* XCRemoteSwiftPackageReference "needle" */;
+			productName = NeedleFoundationTest;
+		};
 		E2D4F86F2C0BAF6900949459 /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E2419E6D2C0BAD730032D13A /* XCRemoteSwiftPackageReference "Nuke" */;

@@ -21,7 +21,7 @@ struct TabBarScreenView: View {
             
             // Screens
             TabView(selection: $selectedIndex, content: {
-                MainScreenView(model: MainScreenViewModel(apiProvider: searchRecipesProvider))
+                RootComponent().rootViewController
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .ignoresSafeArea()
                     .tag(Tab.main.rawValue)
@@ -51,6 +51,7 @@ struct TabBarScreenView: View {
     }
     
     init() {
+        registerProviderFactories()
         UITabBar.appearance().isHidden = true
     }
 }

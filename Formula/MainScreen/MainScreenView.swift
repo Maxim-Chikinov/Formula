@@ -19,7 +19,7 @@ struct MainScreenView: View {
         NavigationView {
             ScrollView {
                 Button(action: {
-                    if let activity {
+                    if activity != nil {
                         updateActivity()
                     } else {
                         activity = startActivity()                        
