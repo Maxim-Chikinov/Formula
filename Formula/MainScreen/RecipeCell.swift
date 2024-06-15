@@ -48,7 +48,7 @@ struct RecipeCard: View {
         )
         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
         .overlay(RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    .stroke(Color.white.opacity(0.2), lineWidth: 0.5)
+                    .stroke(Color.white.opacity(1), lineWidth: 0.5)
                     .blendMode(.overlay))
         .shadow(color: Color.black.opacity(0.4), radius: 8)
     }

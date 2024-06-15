@@ -14,30 +14,36 @@ struct MainScreenView: View {
     @State var showError = false
     @State var lastError: String?
     @State var activity: Activity<FormulaAttributes>?
+    @State var scrollOffset = CGPoint()
+    @State var pullProgress: CGFloat = 0
+    @State var isRefresh = false
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                Button(action: {
-                    if activity != nil {
-                        updateActivity()
-                    } else {
-                        activity = startActivity()                        
-                    }
-                }, label: {
-                    Text("Start Activity")
-                })
+            OffsetObservingScrollView(offset: $scrollOffset) {
+                ProgressView().opacity(pullProgress).frame(height: 100 * pullProgress)
                 RecipesList(
                     model: model,
                     onScrolledAtBottom: {
                         onScrolledAtBottom()
-                    }, 
+                    },
                     isLoading: model.state.canLoadNextPage
                 )
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 60, trailing: 0))
             }
             .background(storage.theame == 0 ? Color.white : Color.black.opacity(0.9))
             .navigationTitle("Recipes List")
+            .navigationBarItems(
+                trailing: Button(action: {
+                    if activity != nil {
+                        updateActivity()
+                    } else {
+                        activity = startActivity()
+                    }
+                }, label: {
+                    Text("Start Activity")
+                })
+            )
         }
         .task {
             do {
@@ -48,6 +54,25 @@ struct MainScreenView: View {
             }
         }
         .alert(lastError ?? "", isPresented: $showError) {}
+        .onChange(of: scrollOffset) { oldValue, newValue in
+            if isRefresh {
+                pullProgress = 1
+                return
+            } else {
+                pullProgress = -newValue.y / 150
+            }
+            
+            // Check to refresh
+            if pullProgress > 1 && !isRefresh {
+                isRefresh = true
+                FeedbackManager.mediumFeedback()
+                Task {
+                    try await model.refresh()
+                    isRefresh = false
+                    pullProgress = 0
+                }
+            }
+        }
     }
     
     private func onScrolledAtBottom() {
@@ -62,6 +87,7 @@ struct MainScreenView: View {
     }
 }
 
+// MARK: - Activity View
 private extension MainScreenView {
     func startActivity() -> Activity<FormulaAttributes>? {
         var activity: Activity<FormulaAttributes>?
@@ -101,8 +127,7 @@ private extension MainScreenView {
 
 #Preview {
     let apiProvider = APIProvider<RecipesEndpoint>()
-    let model = MainScreenViewModel(apiProvider: apiProvider)
-    model.setTestData()
+    let model = TestMainScreenViewModel(apiProvider: apiProvider)
     let view = MainScreenView(model: model).environmentObject(Storage())
     return view
 }

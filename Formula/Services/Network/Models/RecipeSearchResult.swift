@@ -17,7 +17,7 @@ struct RecipeSearchResult: Decodable, Identifiable {
     let to: Int
     let count: Int
     let links: Links
-    let hits: [Hit]
+    var hits: [Hit]
     
     init() {
         from = 0
@@ -64,7 +64,7 @@ struct RecipeSearchResult: Decodable, Identifiable {
         }
     }
     
-    struct Recipe: Decodable, Identifiable, Equatable {
+    struct Recipe: Decodable, Identifiable, Equatable, Hashable {
         
         var id: String {
             shareAs

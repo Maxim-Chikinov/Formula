@@ -13,12 +13,12 @@ struct RecipesList: View {
     let isLoading: Bool
     @State private var startAnimation = false
     
-    var columns = [GridItem(.adaptive(minimum: 160), spacing: 15)]
+    var columns = [GridItem(.adaptive(minimum: 160), spacing: 20)]
     
     var body: some View {
         if model.state.recipesList.count != 0 {
-            VStack {
-                LazyVGrid(columns: columns) {
+            ZStack {
+                LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(model.state.recipesList, id: \.id) { recipe in
                         RecipeCard(recipe: recipe).onAppear {
                             if model.state.recipesList.last == recipe {
@@ -48,9 +48,16 @@ struct RecipesList: View {
 
 #Preview {
     let searchRecipesProvider = APIProvider<RecipesEndpoint>()
+    let apiProvider = APIProvider<RecipesEndpoint>()
+    let model = TestMainScreenViewModel(apiProvider: apiProvider)
+    
+    Task {
+        try await model.fetchRecipes(searchFilter: "")
+    }
+
     return RecipesList(
-        model: MainScreenViewModel(apiProvider: searchRecipesProvider),
+        model: model,
         onScrolledAtBottom: {},
-        isLoading: true
+        isLoading: false
     )
 }
