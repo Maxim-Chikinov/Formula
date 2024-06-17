@@ -17,9 +17,9 @@ struct RecipeCard: View {
                 url: URL(string: recipe.image),
                 transaction: Transaction(animation: .default)) { state in
                     if let image = state.image {
-                      image
-                        .resizable()
-                        .scaledToFill()
+                        image
+                            .resizable()
+                            .scaledToFill()
                     } else {
                         Rectangle().fill(Color.black.opacity(0.1))
                     }
@@ -47,9 +47,11 @@ struct RecipeCard: View {
             LinearGradient(gradient: Gradient(colors: [Color.red, Color.blue]), startPoint: .top, endPoint: .bottomLeading)
         )
         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-        .overlay(RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    .stroke(Color.white.opacity(1), lineWidth: 0.5)
-                    .blendMode(.overlay))
+        .overlay(
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .stroke(Color.white.opacity(1), lineWidth: 0.5)
+                .blendMode(.overlay)
+        )
         .shadow(color: Color.black.opacity(0.4), radius: 8)
     }
 }
@@ -59,6 +61,7 @@ struct RecipeCard: View {
     model.image = "https://wallpapers.com/images/hd/healthy-food-background-chh9nlqxwcyl1t06.jpg"
     model.label = "Some recipe label"
     model.healthLabels = ["Some", "recipe", "label"]
+    
     return RecipeCard(recipe: model)
         .frame(width: 220, height: 200, alignment: .center)
 }

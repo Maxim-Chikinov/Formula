@@ -23,10 +23,10 @@ protocol EndpointProtocol {
 
 extension EndpointProtocol {
     var locale: String {
-        return Locale.current.languageCode ?? "en"
+        return Locale.current.language.languageCode?.identifier ?? "en"
     }
     
     var region: String {
-        return Locale.current.regionCode ?? "us"
+        return Locale.current.region?.identifier ?? "us"
     }
 }

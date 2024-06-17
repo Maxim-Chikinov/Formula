@@ -34,13 +34,12 @@ struct TabBarView: View {
             }
             .background(Color(.systemGray6))
             .cornerRadius(25)
-            .onChange(of: selectedIndex) { index in
+            .onChange(of: selectedIndex, initial: false) { _, newValue in
                 withAnimation {
-                    scrollView.scrollTo(index, anchor: .center)
+                    scrollView.scrollTo(newValue, anchor: .center)
                 }
             }
         }
-        
     }
 }
 

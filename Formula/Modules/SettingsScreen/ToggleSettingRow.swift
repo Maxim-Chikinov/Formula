@@ -28,9 +28,9 @@ struct ToggleSettingRow: View {
                 Text("Dark").tag(1)
             }
             .pickerStyle(.segmented)
-            .onChange(of: selection, perform: { (value) in
-                action(value)
-            })
+            .onChange(of: selection, initial: false) { _, newValue in
+                action(newValue)
+            }
         }
         .padding(.vertical, 10)
         .foregroundColor(.primary)

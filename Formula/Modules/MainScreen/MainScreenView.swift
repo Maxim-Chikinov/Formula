@@ -21,7 +21,9 @@ struct MainScreenView: View {
     var body: some View {
         NavigationView {
             OffsetObservingScrollView(offset: $scrollOffset) {
-                ProgressView().opacity(pullProgress).frame(height: 100 * pullProgress)
+                ProgressView()
+                    .opacity(pullProgress)
+                    .frame(height: max(60 * pullProgress, 0))
                 RecipesList(
                     model: model,
                     onScrolledAtBottom: {
@@ -98,7 +100,10 @@ private extension MainScreenView {
                 driverInFront: "Max Verstappen",
                 driverTeam: "Red Bull racing"
             )
-            activity = try Activity<FormulaAttributes>.request(attributes: attributes, contentState: contentState)
+            activity = try Activity<FormulaAttributes>.request(
+                attributes: attributes,
+                content: ActivityContent(state: contentState, staleDate: nil)
+            )
         } catch {
             print(error.localizedDescription)
         }
@@ -112,14 +117,14 @@ private extension MainScreenView {
                 driverInFront: "not Lewis Hamilton",
                 driverTeam: "Mercedes"
             )
-            await activity?.update(using: contentState)
+            await activity?.update(ActivityContent(state: contentState, staleDate: nil))
         }
     }
     
     func endActivity() {
         Task {
             for activity in Activity<FormulaAttributes>.activities {
-                await activity.end(dismissalPolicy: .immediate)
+                await activity.end(nil, dismissalPolicy: .immediate)
             }
         }
     }

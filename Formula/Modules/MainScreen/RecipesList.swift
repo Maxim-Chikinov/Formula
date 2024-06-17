@@ -20,11 +20,16 @@ struct RecipesList: View {
             ZStack {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(model.state.recipesList, id: \.id) { recipe in
-                        RecipeCard(recipe: recipe).onAppear {
-                            if model.state.recipesList.last == recipe {
-                                onScrolledAtBottom()
+                        NavigationLink(destination: {
+                            RecipeDetailView(model: RecipeDetailViewModel())
+                        }, label: {
+                            RecipeCard(recipe: recipe).onAppear {
+                                if model.state.recipesList.last == recipe {
+                                    onScrolledAtBottom()
+                                }
                             }
-                        }
+                        })
+                        .buttonStyle(ScaleButtonStyle())
                     }
                 }
                 .opacity(startAnimation ? 1 : 0)
@@ -47,7 +52,6 @@ struct RecipesList: View {
 }
 
 #Preview {
-    let searchRecipesProvider = APIProvider<RecipesEndpoint>()
     let apiProvider = APIProvider<RecipesEndpoint>()
     let model = TestMainScreenViewModel(apiProvider: apiProvider)
     
