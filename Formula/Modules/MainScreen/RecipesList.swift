@@ -23,7 +23,10 @@ struct RecipesList: View {
                         NavigationLink(destination: {
                             RecipeDetailView(model: RecipeDetailViewModel())
                         }, label: {
-                            RecipeCard(recipe: recipe).onAppear {
+                            RecipeCard(recipe: recipe, onFavourite: {
+                                model.changeFavourite(for: recipe)
+                            })
+                            .onAppear {
                                 if model.state.recipesList.last == recipe {
                                     onScrolledAtBottom()
                                 }

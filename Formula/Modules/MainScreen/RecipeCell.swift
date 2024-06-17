@@ -10,23 +10,36 @@ import NukeUI
 
 struct RecipeCard: View {
     var recipe: RecipeSearchResult.Recipe
+    var onFavourite: (() -> ())?
     
     var body: some View {
         VStack(spacing: 8) {
-            LazyImage(
-                url: URL(string: recipe.image),
-                transaction: Transaction(animation: .default)) { state in
-                    if let image = state.image {
-                        image
-                            .resizable()
-                            .scaledToFill()
-                    } else {
-                        Rectangle().fill(Color.black.opacity(0.1))
+            ZStack(alignment: .topTrailing) {
+                LazyImage(
+                    url: URL(string: recipe.image),
+                    transaction: Transaction(animation: .default)) { state in
+                        if let image = state.image {
+                            image
+                                .resizable()
+                                .scaledToFill()
+                        } else {
+                            Rectangle().fill(Color.black.opacity(0.1))
+                        }
                     }
-                }
-                .frame(height: 80)
-                .clipped()
-                .cornerRadius(12)
+                    .frame(height: 80)
+                    .clipped()
+                    .cornerRadius(12)
+                
+                StatedButton(
+                    isSelected: recipe.isFavourite,
+                    action: { _ in
+                        onFavourite?()
+                    }, label: {
+                        Text("★")
+                            .frame(width: 40, height: 40)
+                    })
+                .padding(8)
+            }
             
             Text(recipe.label)
                 .font(.headline)
@@ -57,11 +70,11 @@ struct RecipeCard: View {
 }
 
 #Preview {
-    var model = RecipeSearchResult.Recipe.init()
-    model.image = "https://wallpapers.com/images/hd/healthy-food-background-chh9nlqxwcyl1t06.jpg"
-    model.label = "Some recipe label"
-    model.healthLabels = ["Some", "recipe", "label"]
+    var recipe = RecipeSearchResult.Recipe()
+    recipe.image = "https://wallpapers.com/images/hd/healthy-food-background-chh9nlqxwcyl1t06.jpg"
+    recipe.label = "Some recipe label"
+    recipe.healthLabels = ["Some", "recipe", "label"]
     
-    return RecipeCard(recipe: model)
+    return RecipeCard(recipe: recipe)
         .frame(width: 220, height: 200, alignment: .center)
 }

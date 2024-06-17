@@ -64,7 +64,8 @@ struct RecipeSearchResult: Decodable, Identifiable {
         }
     }
     
-    struct Recipe: Decodable, Identifiable, Equatable, Hashable {
+    struct Recipe: Decodable, Identifiable, Equatable, Hashable, Favouritable {
+        var isFavourite: Bool = false
         
         var id: String {
             shareAs
@@ -89,4 +90,8 @@ struct RecipeSearchResult: Decodable, Identifiable {
             case healthLabels
         }
     }
+}
+
+protocol Favouritable {
+    var isFavourite: Bool { get set }
 }

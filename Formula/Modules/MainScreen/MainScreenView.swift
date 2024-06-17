@@ -29,7 +29,7 @@ struct MainScreenView: View {
                     onScrolledAtBottom: {
                         onScrolledAtBottom()
                     },
-                    isLoading: model.state.canLoadNextPage
+                    isLoading: model.state.recipesList.isEmpty
                 )
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 60, trailing: 0))
             }

@@ -39,6 +39,8 @@
 		E29716302C1EAA2E009E3D30 /* RecipeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E297162E2C1EAA2E009E3D30 /* RecipeDetailViewModel.swift */; };
 		E29716342C1EE97E009E3D30 /* ScaleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29716332C1EE97E009E3D30 /* ScaleButtonStyle.swift */; };
 		E29716352C1EE97E009E3D30 /* ScaleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29716332C1EE97E009E3D30 /* ScaleButtonStyle.swift */; };
+		E29716372C20BCD2009E3D30 /* StatedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29716362C20BCD2009E3D30 /* StatedButton.swift */; };
+		E29716382C20BCD2009E3D30 /* StatedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29716362C20BCD2009E3D30 /* StatedButton.swift */; };
 		E2D4F8702C0BAF6900949459 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = E2D4F86F2C0BAF6900949459 /* Nuke */; };
 		E2D4F8722C0BAF6900949459 /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = E2D4F8712C0BAF6900949459 /* NukeExtensions */; };
 		E2D4F8742C0BAF6900949459 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = E2D4F8732C0BAF6900949459 /* NukeUI */; };
@@ -152,6 +154,7 @@
 		E297162B2C1EAA19009E3D30 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
 		E297162E2C1EAA2E009E3D30 /* RecipeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewModel.swift; sourceTree = "<group>"; };
 		E29716332C1EE97E009E3D30 /* ScaleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleButtonStyle.swift; sourceTree = "<group>"; };
+		E29716362C20BCD2009E3D30 /* StatedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatedButton.swift; sourceTree = "<group>"; };
 		E2D4F8772C0C597400949459 /* SettingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRow.swift; sourceTree = "<group>"; };
 		E2D4F8792C0C598F00949459 /* FeedbackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackManager.swift; sourceTree = "<group>"; };
 		E2D4F87B2C0C59FB00949459 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -329,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				E29716242C1DEDF9009E3D30 /* OffsetObservingScrollView.swift */,
+				E29716362C20BCD2009E3D30 /* StatedButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -702,6 +706,7 @@
 				E297162C2C1EAA19009E3D30 /* RecipeDetailView.swift in Sources */,
 				E2D5F6922C0B2F8100E06E96 /* SearchScreenView.swift in Sources */,
 				E25CC7E02C0A5F3B00FAD289 /* FormulaApp.swift in Sources */,
+				E29716372C20BCD2009E3D30 /* StatedButton.swift in Sources */,
 				E26AA2342C12EB6000779D30 /* FormulaAttributes.swift in Sources */,
 				E2D5F6962C0B2FE200E06E96 /* ProfileScreenView.swift in Sources */,
 				E2D5F6BC2C0B5BBE00E06E96 /* RecipesList.swift in Sources */,
@@ -726,6 +731,7 @@
 				E29716262C1DEDF9009E3D30 /* OffsetObservingScrollView.swift in Sources */,
 				E26AA2372C12EEFF00779D30 /* FormulaAttributes.swift in Sources */,
 				E2F74AB12C1632E30033D7EE /* String+Extension.swift in Sources */,
+				E29716382C20BCD2009E3D30 /* StatedButton.swift in Sources */,
 				E2F74AAC2C1632860033D7EE /* EndpointProtocol.swift in Sources */,
 				E2F74AAE2C1632900033D7EE /* APIErrors.swift in Sources */,
 				E29716352C1EE97E009E3D30 /* ScaleButtonStyle.swift in Sources */,

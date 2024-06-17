@@ -16,6 +16,7 @@ class MainScreenViewModel: ObservableObject {
     }
     
     @Published var state = State()
+    @AppStorage("FavouriteRecipesList") var favouriteRecipesList: [String] = []
     
     private let apiProvider: any APIProviderProtocol<RecipesEndpoint>
     
@@ -50,7 +51,13 @@ class MainScreenViewModel: ObservableObject {
     
     @MainActor
     fileprivate func onReceive(reload: Bool = false, _ response: RecipeSearchResult) {
-        let batch = response.hits.map({ $0.recipe })
+        let batch = response.hits
+            .map({ $0.recipe })
+            .map({ recipe in
+            var recipe = recipe
+            recipe.isFavourite = favouriteRecipesList.contains(recipe.label)
+            return recipe
+        })
         if reload {
             state = State()
         }
@@ -58,6 +65,14 @@ class MainScreenViewModel: ObservableObject {
         state.recipesList += batch
         state.page += response.count
         state.canLoadNextPage = response.to != response.count
+    }
+    
+    func changeFavourite(for recepe: RecipeSearchResult.Recipe) {
+        if favouriteRecipesList.contains(recepe.label) {
+            favouriteRecipesList.removeAll(where: {$0 == recepe.label})
+        } else {
+            favouriteRecipesList.append(recepe.label)
+        }
     }
 }
 
