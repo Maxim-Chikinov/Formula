@@ -46,12 +46,6 @@ struct SelectableButtonStyle: ButtonStyle {
             .scaleEffect(configuration.isPressed ? 0.9 : 1)
             .animation(.bouncy, value: configuration.isPressed)
             .animation(.linear, value: isSelected)
-            .foregroundStyle(isSelected ? Color.yellow: Color.gray)
-            .background(
-                Rectangle()
-                    .fill(configuration.isPressed ? Color.white.opacity(0.4) : Color.white)
-                    .cornerRadius(6)
-            )
     }
 }
 

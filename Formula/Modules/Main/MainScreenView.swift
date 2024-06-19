@@ -21,9 +21,11 @@ struct MainScreenView: View {
     var body: some View {
         NavigationView {
             OffsetObservingScrollView(offset: $scrollOffset) {
-                ProgressView()
+                InfiniteProgressView()
                     .opacity(pullProgress)
-                    .frame(height: max(60 * pullProgress, 0))
+                    .padding()
+                    .frame(width: max(60 * pullProgress, 0),
+                           height: max(60 * pullProgress, 0))
                 RecipesList(
                     model: model,
                     onScrolledAtBottom: {
@@ -32,6 +34,7 @@ struct MainScreenView: View {
                     isLoading: model.state.recipesList.isEmpty
                 )
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 60, trailing: 0))
+                .frame(minWidth: 300, minHeight: 500)
             }
             .background(storage.theame == 0 ? Color.white : Color.black.opacity(0.9))
             .navigationTitle("Recipes List")
@@ -56,7 +59,7 @@ struct MainScreenView: View {
             }
         }
         .alert(lastError ?? "", isPresented: $showError) {}
-        .onChange(of: scrollOffset) { oldValue, newValue in
+        .onChange(of: scrollOffset) { newValue in
             if isRefresh {
                 pullProgress = 1
                 return
@@ -102,7 +105,7 @@ private extension MainScreenView {
             )
             activity = try Activity<FormulaAttributes>.request(
                 attributes: attributes,
-                content: ActivityContent(state: contentState, staleDate: nil)
+                contentState: contentState
             )
         } catch {
             print(error.localizedDescription)
@@ -117,14 +120,18 @@ private extension MainScreenView {
                 driverInFront: "not Lewis Hamilton",
                 driverTeam: "Mercedes"
             )
-            await activity?.update(ActivityContent(state: contentState, staleDate: nil))
+            await activity?.update(using: contentState)
         }
     }
     
     func endActivity() {
         Task {
             for activity in Activity<FormulaAttributes>.activities {
-                await activity.end(nil, dismissalPolicy: .immediate)
+                if #available(iOS 16.2, *) {
+                    await activity.end(nil, dismissalPolicy: .immediate)
+                } else {
+                    // Fallback on earlier versions
+                }
             }
         }
     }

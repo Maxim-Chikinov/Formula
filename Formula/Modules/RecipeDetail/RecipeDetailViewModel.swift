@@ -8,5 +8,5 @@
 import Foundation
 
 class RecipeDetailViewModel: ObservableObject {
-    
+    var recipe: RecipeSearchResult.Recipe = .init()
 }

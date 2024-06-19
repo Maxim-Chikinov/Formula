@@ -92,12 +92,12 @@ class TestMainScreenViewModel: MainScreenViewModel {
     }
     
     override func fetchNextPage() async throws {
-        try await Task.sleep(for: .seconds(1))
+        try await Task.sleep(for: .seconds(2))
         await onReceive(getTestResult())
     }
     
     override func fetchRecipes(searchFilter: String, from: Int = 0) async throws {
-        try await Task.sleep(for: .seconds(1))
+        try await Task.sleep(for: .seconds(2))
         await onReceive(getTestResult())
     }
     

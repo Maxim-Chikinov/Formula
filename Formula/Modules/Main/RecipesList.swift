@@ -10,18 +10,20 @@ import SwiftUI
 struct RecipesList: View {
     @ObservedObject var model: MainScreenViewModel
     let onScrolledAtBottom: () -> Void
-    let isLoading: Bool
+    @State var isLoading: Bool = false
     @State private var startAnimation = false
     
-    var columns = [GridItem(.adaptive(minimum: 160), spacing: 20)]
+    var columns = [GridItem(.adaptive(minimum: 140), spacing: 10, alignment: .center)]
     
     var body: some View {
         if model.state.recipesList.count != 0 {
-            ZStack {
-                LazyVGrid(columns: columns, spacing: 20) {
+            VStack {
+                LazyVGrid(columns: columns, spacing: 10) {
                     ForEach(model.state.recipesList, id: \.id) { recipe in
                         NavigationLink(destination: {
-                            RecipeDetailView(model: RecipeDetailViewModel())
+                            let model = RecipeDetailViewModel()
+                            model.recipe = recipe
+                            return RecipeDetailView(model: model)
                         }, label: {
                             RecipeCard(recipe: recipe, onFavourite: {
                                 model.changeFavourite(for: recipe)
@@ -29,6 +31,7 @@ struct RecipesList: View {
                             .onAppear {
                                 if model.state.recipesList.last == recipe {
                                     onScrolledAtBottom()
+                                    isLoading = true
                                 }
                             }
                         })
@@ -37,7 +40,7 @@ struct RecipesList: View {
                 }
                 .opacity(startAnimation ? 1 : 0)
                 .offset(CGSize(width: 0, height: startAnimation ? 0 : -20))
-                .padding(.horizontal, 20)
+                .padding(.horizontal, 10)
                 .padding(.bottom, 20)
                 .animation(.bouncy, value: startAnimation)
                 .onAppear(perform: {
@@ -45,11 +48,11 @@ struct RecipesList: View {
                 })
                 
                 if isLoading {
-                    ProgressView()
+                    InfiniteProgressView().frame(width: 100, height: 100)
                 }
             }
         } else {
-            ProgressView().frame(width: 500, height: 500)
+            InfiniteProgressView().frame(width: 100, height: 100)
         }
     }
 }
@@ -64,7 +67,6 @@ struct RecipesList: View {
 
     return RecipesList(
         model: model,
-        onScrolledAtBottom: {},
-        isLoading: false
+        onScrolledAtBottom: {}
     )
 }

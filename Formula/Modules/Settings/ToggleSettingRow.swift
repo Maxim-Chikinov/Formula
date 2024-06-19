@@ -28,7 +28,7 @@ struct ToggleSettingRow: View {
                 Text("Dark").tag(1)
             }
             .pickerStyle(.segmented)
-            .onChange(of: selection, initial: false) { _, newValue in
+            .onChange(of: selection) { newValue in
                 action(newValue)
             }
         }

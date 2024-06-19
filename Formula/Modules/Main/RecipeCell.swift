@@ -30,14 +30,10 @@ struct RecipeCard: View {
                     .clipped()
                     .cornerRadius(12)
                 
-                StatedButton(
-                    isSelected: recipe.isFavourite,
-                    action: { _ in
-                        onFavourite?()
-                    }, label: {
-                        Text("★")
-                            .frame(width: 40, height: 40)
-                    })
+                HeartView(isSelect: recipe.isFavourite) {
+                    onFavourite?()
+                }
+                .frame(width: 30, height: 30)
                 .padding(8)
             }
             
