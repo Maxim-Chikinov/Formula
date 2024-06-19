@@ -18,11 +18,11 @@ struct FormulaApp: App {
     
     init() {
         let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.red, .font: UIFont(name: "PingFang SC Regular", size: 35) ?? UIFont()]
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.red, .font: UIFont(name: "PingFang SC Regular", size: 20) ?? UIFont()]
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.purple, .font: UIFont(name: "PingFang SC Regular", size: 35) ?? UIFont()]
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.purple, .font: UIFont(name: "PingFang SC Regular", size: 20) ?? UIFont()]
         
         let buttonAppearance = UIBarButtonItemAppearance()
-        buttonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.red, .font: UIFont(name: "PingFang SC Regular", size: 14) ?? UIFont()]
+        buttonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.purple, .font: UIFont(name: "PingFang SC Regular", size: 14) ?? UIFont()]
         navBarAppearance.buttonAppearance = buttonAppearance
         
         navBarAppearance.setBackIndicatorImage(UIImage(systemName: "arrow.uturn.left"), transitionMaskImage: UIImage(systemName: "arrow.uturn.left"))

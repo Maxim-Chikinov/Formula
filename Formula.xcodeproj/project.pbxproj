@@ -47,6 +47,8 @@
 		E29716482C22113A009E3D30 /* InfiniteProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29716462C22113A009E3D30 /* InfiniteProgressView.swift */; };
 		E297164A2C221AAC009E3D30 /* BublesProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29716492C221AAC009E3D30 /* BublesProgressView.swift */; };
 		E297164B2C221AAC009E3D30 /* BublesProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29716492C221AAC009E3D30 /* BublesProgressView.swift */; };
+		E2B0C8062C2307F40024CF05 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B0C8052C2307F40024CF05 /* UINavigationController+Extension.swift */; };
+		E2B0C8082C2308130024CF05 /* CustomNavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B0C8072C2308130024CF05 /* CustomNavigationBarModifier.swift */; };
 		E2C781DC2C22F32800149A18 /* FontsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C781DB2C22F32800149A18 /* FontsList.swift */; };
 		E2C781DD2C22F32800149A18 /* FontsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C781DB2C22F32800149A18 /* FontsList.swift */; };
 		E2D4F8702C0BAF6900949459 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = E2D4F86F2C0BAF6900949459 /* Nuke */; };
@@ -166,6 +168,8 @@
 		E29716432C21D668009E3D30 /* HeartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartView.swift; sourceTree = "<group>"; };
 		E29716462C22113A009E3D30 /* InfiniteProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteProgressView.swift; sourceTree = "<group>"; };
 		E29716492C221AAC009E3D30 /* BublesProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BublesProgressView.swift; sourceTree = "<group>"; };
+		E2B0C8052C2307F40024CF05 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
+		E2B0C8072C2308130024CF05 /* CustomNavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarModifier.swift; sourceTree = "<group>"; };
 		E2C781DB2C22F32800149A18 /* FontsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsList.swift; sourceTree = "<group>"; };
 		E2D4F8772C0C597400949459 /* SettingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRow.swift; sourceTree = "<group>"; };
 		E2D4F8792C0C598F00949459 /* FeedbackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackManager.swift; sourceTree = "<group>"; };
@@ -380,6 +384,7 @@
 			isa = PBXGroup;
 			children = (
 				E29716332C1EE97E009E3D30 /* ScaleButtonStyle.swift */,
+				E2B0C8072C2308130024CF05 /* CustomNavigationBarModifier.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -443,6 +448,7 @@
 				E2D5F6BD2C0B852100E06E96 /* URLRequest+cURL.swift */,
 				E2D5F6BF2C0B894A00E06E96 /* Data+JSON.swift */,
 				E2D4F8892C0C622F00949459 /* View+Extension.swift */,
+				E2B0C8052C2307F40024CF05 /* UINavigationController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -722,11 +728,13 @@
 				E2D5F6C02C0B894A00E06E96 /* Data+JSON.swift in Sources */,
 				E2D5F6AF2C0B45D400E06E96 /* MainScreenViewModel.swift in Sources */,
 				E297162C2C1EAA19009E3D30 /* RecipeDetailView.swift in Sources */,
+				E2B0C8082C2308130024CF05 /* CustomNavigationBarModifier.swift in Sources */,
 				E2D5F6922C0B2F8100E06E96 /* SearchScreenView.swift in Sources */,
 				E25CC7E02C0A5F3B00FAD289 /* FormulaApp.swift in Sources */,
 				E29716372C20BCD2009E3D30 /* StatedButton.swift in Sources */,
 				E29716472C22113A009E3D30 /* InfiniteProgressView.swift in Sources */,
 				E26AA2342C12EB6000779D30 /* FormulaAttributes.swift in Sources */,
+				E2B0C8062C2307F40024CF05 /* UINavigationController+Extension.swift in Sources */,
 				E2D5F6962C0B2FE200E06E96 /* ProfileScreenView.swift in Sources */,
 				E2D5F6BC2C0B5BBE00E06E96 /* RecipesList.swift in Sources */,
 				E2D5F6AB2C0B43B700E06E96 /* String+Extension.swift in Sources */,

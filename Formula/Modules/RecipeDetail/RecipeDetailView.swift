@@ -14,9 +14,6 @@ struct RecipeDetailView: View {
     var body: some View {
         ScrollView {
             VStack {
-                Text(model.recipe.label)
-                    .font(.system(.title, design: .rounded))
-                    .fontWeight(.black)
                 LazyImage(
                     url: URL(string: model.recipe.image),
                     transaction: Transaction(animation: .default)
@@ -31,10 +28,42 @@ struct RecipeDetailView: View {
                 }
                 .frame(height: 200)
                 .clipped()
+                
+                Text(model.recipe.label)
+                    .font(.system(.title, design: .rounded))
+                    .fontWeight(.black)
+                    .padding()
+                
+                
+                ScrollView(.horizontal) {
+                    LazyHStack(content: {
+                        ForEach(model.recipe.healthLabels, id: \.self) { label in
+                            Text(label)
+                                .padding()
+                                .background(Color.gray.opacity(0.2))
+                                .cornerRadius(10)
+                        }
+                    })
+                    .padding()
+                }
+                
+                Text(model.recipe.healthLabels.joined(separator: ", "))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding()
+                    .background(Color.gray.opacity(0.2))
+                    .multilineTextAlignment(.leading)
+                    .font(.callout)
+                    .padding()
             }
-            .ignoresSafeArea()
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("Recipe detail")
+            .padding(.init(top: 0, leading: 0, bottom: 80, trailing: 0))
+            .setNavigationBar(title: "Recipe Details")
+            .toolbar(content: {
+                ToolbarItem(placement: .topBarTrailing) {
+                    HeartView(isSelect: true) {
+                        
+                    }
+                }
+            })
         }
     }
 }
