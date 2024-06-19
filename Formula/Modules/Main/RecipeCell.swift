@@ -9,7 +9,7 @@ import SwiftUI
 import NukeUI
 
 struct RecipeCard: View {
-    var recipe: RecipeSearchResult.Recipe
+    @Binding var recipe: RecipeSearchResult.Recipe
     var onFavourite: (() -> ())?
     
     var body: some View {
@@ -30,7 +30,7 @@ struct RecipeCard: View {
                     .clipped()
                     .cornerRadius(12)
                 
-                HeartView(isSelect: recipe.isFavourite) {
+                HeartView(isSelect: $recipe.isFavourite) { _ in
                     onFavourite?()
                 }
                 .frame(width: 30, height: 30)
@@ -71,6 +71,6 @@ struct RecipeCard: View {
     recipe.label = "Some recipe label"
     recipe.healthLabels = ["Some", "recipe", "label"]
     
-    return RecipeCard(recipe: recipe)
+    return RecipeCard(recipe: .constant(recipe))
         .frame(width: 220, height: 200, alignment: .center)
 }

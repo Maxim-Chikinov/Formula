@@ -9,27 +9,33 @@ import SwiftUI
 
 struct RecipesList: View {
     @ObservedObject var model: MainScreenViewModel
-    let onScrolledAtBottom: () -> Void
-    @State var isLoading: Bool = false
+    @State private var isLoading: Bool = false
     @State private var startAnimation = false
+    let onScrolledAtBottom: () -> Void
+    let onDetailDissapear: (() -> Void)?
     
     var columns = [GridItem(.adaptive(minimum: 140), spacing: 10, alignment: .center)]
     
     var body: some View {
-        if model.state.recipesList.count != 0 {
+        if model.recipesList.count != 0 {
             VStack {
                 LazyVGrid(columns: columns, spacing: 10) {
-                    ForEach(model.state.recipesList, id: \.id) { recipe in
+                    ForEach($model.recipesList) { $recipe in
                         NavigationLink(destination: {
                             let model = RecipeDetailViewModel()
                             model.recipe = recipe
                             return RecipeDetailView(model: model)
+                                .onDisappear(perform: {
+                                    onDetailDissapear?()
+                                })
                         }, label: {
-                            RecipeCard(recipe: recipe, onFavourite: {
-                                model.changeFavourite(for: recipe)
-                            })
+                            RecipeCard(
+                                recipe: $recipe,
+                                onFavourite: {
+                                    model.changeFavourite(for: recipe)
+                                })
                             .onAppear {
-                                if model.state.recipesList.last == recipe {
+                                if model.recipesList.last == recipe {
                                     onScrolledAtBottom()
                                     isLoading = true
                                 }
@@ -67,6 +73,7 @@ struct RecipesList: View {
 
     return RecipesList(
         model: model,
-        onScrolledAtBottom: {}
+        onScrolledAtBottom: {},
+        onDetailDissapear: nil
     )
 }

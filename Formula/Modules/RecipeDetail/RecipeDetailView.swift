@@ -59,10 +59,15 @@ struct RecipeDetailView: View {
             .setNavigationBar(title: "Recipe Details")
             .toolbar(content: {
                 ToolbarItem(placement: .topBarTrailing) {
-                    HeartView(isSelect: true) {
-                        
+                    HeartView(isSelect: $model.recipe.isFavourite) { _ in
+                        var recipe = model.recipe
+                        recipe.isFavourite.toggle()
+                        model.changeFavourite(for: recipe)
                     }
                 }
+            })
+            .onAppear(perform: {
+                model.update()
             })
         }
     }

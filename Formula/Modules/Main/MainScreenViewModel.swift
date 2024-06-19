@@ -7,16 +7,15 @@
 
 import SwiftUI
 
+enum UserDefault {
+    @AppStorage("FavouriteRecipesList") static var favouriteRecipesList: [String] = []
+}
+
 class MainScreenViewModel: ObservableObject {
-    struct State {
-        var response: RecipeSearchResult = .init()
-        var recipesList: [RecipeSearchResult.Recipe] = []
-        var page: Int = 0
-        var canLoadNextPage = true
-    }
-    
-    @Published var state = State()
-    @AppStorage("FavouriteRecipesList") var favouriteRecipesList: [String] = []
+    @Published var response: RecipeSearchResult = .init()
+    @Published var recipesList: [RecipeSearchResult.Recipe] = []
+    @Published var page: Int = 0
+    @Published var canLoadNextPage = true
     
     private let apiProvider: any APIProviderProtocol<RecipesEndpoint>
     
@@ -32,8 +31,8 @@ class MainScreenViewModel: ObservableObject {
     
     func fetchNextPage() async throws {
         guard
-            state.canLoadNextPage,
-            let nextPageUrl = state.response.links.next?.nextPageUrl,
+            canLoadNextPage,
+            let nextPageUrl = response.links.next?.nextPageUrl,
             let url = URL(string: nextPageUrl)
         else {
             return
@@ -55,24 +54,36 @@ class MainScreenViewModel: ObservableObject {
             .map({ $0.recipe })
             .map({ recipe in
             var recipe = recipe
-            recipe.isFavourite = favouriteRecipesList.contains(recipe.label)
+            recipe.isFavourite = UserDefault.favouriteRecipesList.contains(recipe.label)
             return recipe
         })
         if reload {
-            state = State()
+            self.response = .init()
+            recipesList.removeAll()
         }
-        state.response = response
-        state.recipesList += batch
-        state.page += response.count
-        state.canLoadNextPage = response.to != response.count
+        self.response = response
+        recipesList += batch
+        page += response.count
+        canLoadNextPage = response.to != response.count
     }
     
     func changeFavourite(for recepe: RecipeSearchResult.Recipe) {
-        if favouriteRecipesList.contains(recepe.label) {
-            favouriteRecipesList.removeAll(where: {$0 == recepe.label})
+        if UserDefault.favouriteRecipesList.contains(recepe.label) {
+            UserDefault.favouriteRecipesList.removeAll(where: {$0 == recepe.label})
         } else {
-            favouriteRecipesList.append(recepe.label)
+            UserDefault.favouriteRecipesList.append(recepe.label)
         }
+        update()
+    }
+    
+    func update() {
+        let recipesList = recipesList
+            .map({ recipe in
+                var recipe = recipe
+                recipe.isFavourite = UserDefault.favouriteRecipesList.contains(recipe.label)
+                return recipe
+            })
+        self.recipesList = recipesList
     }
 }
 
@@ -103,7 +114,7 @@ class TestMainScreenViewModel: MainScreenViewModel {
     
     override func refresh() async throws {
         try await Task.sleep(for: .seconds(1))
-        self.state = State()
+        recipesList.removeAll()
         await onReceive(getTestResult())
     }
 }

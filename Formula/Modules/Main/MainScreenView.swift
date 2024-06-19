@@ -31,7 +31,9 @@ struct MainScreenView: View {
                     onScrolledAtBottom: {
                         onScrolledAtBottom()
                     },
-                    isLoading: model.state.recipesList.isEmpty
+                    onDetailDissapear: {
+                        model.update()
+                    }
                 )
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 60, trailing: 0))
                 .frame(minWidth: 300, minHeight: 500)

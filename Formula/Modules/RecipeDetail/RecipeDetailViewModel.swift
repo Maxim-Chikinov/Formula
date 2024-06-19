@@ -5,8 +5,21 @@
 //  Created by Chikinov Maxim on 16.06.2024.
 //
 
-import Foundation
+import SwiftUI
 
 class RecipeDetailViewModel: ObservableObject {
-    var recipe: RecipeSearchResult.Recipe = .init()
+    @Published var recipe: RecipeSearchResult.Recipe = .init()
+    
+    func changeFavourite(for recepe: RecipeSearchResult.Recipe) {
+        if UserDefault.favouriteRecipesList.contains(recepe.label) {
+            UserDefault.favouriteRecipesList.removeAll(where: {$0 == recepe.label})
+        } else {
+            UserDefault.favouriteRecipesList.append(recepe.label)
+        }
+        update()
+    }
+    
+    func update() {
+        recipe.isFavourite = UserDefault.favouriteRecipesList.contains(recipe.label)
+    }
 }
