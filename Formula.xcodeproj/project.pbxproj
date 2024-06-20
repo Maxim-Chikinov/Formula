@@ -49,6 +49,7 @@
 		E297164B2C221AAC009E3D30 /* BublesProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29716492C221AAC009E3D30 /* BublesProgressView.swift */; };
 		E2B0C8062C2307F40024CF05 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B0C8052C2307F40024CF05 /* UINavigationController+Extension.swift */; };
 		E2B0C8082C2308130024CF05 /* CustomNavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B0C8072C2308130024CF05 /* CustomNavigationBarModifier.swift */; };
+		E2BF7BA92C245659002E702D /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BF7BA82C245659002E702D /* FilterView.swift */; };
 		E2C781DC2C22F32800149A18 /* FontsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C781DB2C22F32800149A18 /* FontsList.swift */; };
 		E2C781DD2C22F32800149A18 /* FontsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C781DB2C22F32800149A18 /* FontsList.swift */; };
 		E2D4F8702C0BAF6900949459 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = E2D4F86F2C0BAF6900949459 /* Nuke */; };
@@ -170,6 +171,7 @@
 		E29716492C221AAC009E3D30 /* BublesProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BublesProgressView.swift; sourceTree = "<group>"; };
 		E2B0C8052C2307F40024CF05 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		E2B0C8072C2308130024CF05 /* CustomNavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarModifier.swift; sourceTree = "<group>"; };
+		E2BF7BA82C245659002E702D /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		E2C781DB2C22F32800149A18 /* FontsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsList.swift; sourceTree = "<group>"; };
 		E2D4F8772C0C597400949459 /* SettingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRow.swift; sourceTree = "<group>"; };
 		E2D4F8792C0C598F00949459 /* FeedbackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackManager.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 		E25CC7D32C0A5F3B00FAD289 = {
 			isa = PBXGroup;
 			children = (
+				E2BF7BA82C245659002E702D /* FilterView.swift */,
 				E25CC7DE2C0A5F3B00FAD289 /* Formula */,
 				E25CC7EF2C0A5F3C00FAD289 /* FormulaTests */,
 				E25CC7F92C0A5F3C00FAD289 /* FormulaUITests */,
@@ -730,6 +733,7 @@
 				E297162C2C1EAA19009E3D30 /* RecipeDetailView.swift in Sources */,
 				E2B0C8082C2308130024CF05 /* CustomNavigationBarModifier.swift in Sources */,
 				E2D5F6922C0B2F8100E06E96 /* SearchScreenView.swift in Sources */,
+				E2BF7BA92C245659002E702D /* FilterView.swift in Sources */,
 				E25CC7E02C0A5F3B00FAD289 /* FormulaApp.swift in Sources */,
 				E29716372C20BCD2009E3D30 /* StatedButton.swift in Sources */,
 				E29716472C22113A009E3D30 /* InfiniteProgressView.swift in Sources */,

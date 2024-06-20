@@ -17,6 +17,7 @@ struct MainScreenView: View {
     @State var scrollOffset = CGPoint()
     @State var pullProgress: CGFloat = 0
     @State var isRefresh = false
+    @State var showFilter: Bool = false
     
     var body: some View {
         NavigationView {
@@ -51,6 +52,12 @@ struct MainScreenView: View {
                     Text("Start Activity")
                 })
             )
+            .navigationBarItems(leading: Button("Filter", action: {
+                showFilter.toggle()
+            }))
+            .sheet(isPresented: $showFilter, content: {
+                FilterView()
+            })
         }
         .task {
             do {

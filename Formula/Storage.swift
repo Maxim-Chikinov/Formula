@@ -6,9 +6,17 @@
 //
 
 import SwiftUI
+import Combine
 
 class Storage: ObservableObject {
     @AppStorage("ApplicationTheam") var theame: Int = 0
+    @AppStorage("view.preferences.showFavouriteOnly") var showFavouriteOnly: Bool = false
+    @AppStorage("view.preferences.displayOrder") var displayOrder: Int = 0
+    @AppStorage("view.preferences.maxCaloriesLevel") var maxCaloriesLevel: Int = 0
+    
+    var displayOrderType: DisplayOrderType {
+        DisplayOrderType(type: displayOrder)
+    }
 }
 
 extension Array: RawRepresentable where Element: Codable {

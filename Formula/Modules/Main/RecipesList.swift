@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RecipesList: View {
     @ObservedObject var model: MainScreenViewModel
+    @EnvironmentObject var storage: Storage
     @State private var isLoading: Bool = false
     @State private var startAnimation = false
     let onScrolledAtBottom: () -> Void
@@ -20,28 +21,30 @@ struct RecipesList: View {
         if model.recipesList.count != 0 {
             VStack {
                 LazyVGrid(columns: columns, spacing: 10) {
-                    ForEach($model.recipesList) { $recipe in
-                        NavigationLink(destination: {
-                            let model = RecipeDetailViewModel()
-                            model.recipe = recipe
-                            return RecipeDetailView(model: model)
-                                .onDisappear(perform: {
-                                    onDetailDissapear?()
-                                })
-                        }, label: {
-                            RecipeCard(
-                                recipe: $recipe,
-                                onFavourite: {
-                                    model.changeFavourite(for: recipe)
-                                })
-                            .onAppear {
-                                if model.recipesList.last == recipe {
-                                    onScrolledAtBottom()
-                                    isLoading = true
+                    ForEach(model.recipesList.sorted(by: storage.displayOrderType.predicate())) { recipe in
+                        if shouldShowOnlyFavourite(recipe: recipe) {
+                            NavigationLink(destination: {
+                                let model = RecipeDetailViewModel()
+                                model.recipe = recipe
+                                return RecipeDetailView(model: model)
+                                    .onDisappear(perform: {
+                                        onDetailDissapear?()
+                                    })
+                            }, label: {
+                                RecipeCard(
+                                    recipe: .constant(recipe),
+                                    onFavourite: {
+                                        model.changeFavourite(for: recipe)
+                                    })
+                                .onAppear {
+                                    if model.recipesList.last == recipe && !storage.showFavouriteOnly {
+                                        onScrolledAtBottom()
+                                        isLoading = true
+                                    }
                                 }
-                            }
-                        })
-                        .buttonStyle(ScaleButtonStyle())
+                            })
+                            .buttonStyle(ScaleButtonStyle())
+                        }
                     }
                 }
                 .opacity(startAnimation ? 1 : 0)
@@ -60,6 +63,10 @@ struct RecipesList: View {
         } else {
             InfiniteProgressView().frame(width: 100, height: 100)
         }
+    }
+    
+    func shouldShowOnlyFavourite(recipe: RecipeSearchResult.Recipe) -> Bool {
+        return recipe.isFavourite || !storage.showFavouriteOnly
     }
 }
 
