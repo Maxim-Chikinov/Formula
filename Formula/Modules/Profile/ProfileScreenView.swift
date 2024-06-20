@@ -9,6 +9,12 @@ import SwiftUI
 
 struct ProfileScreenView: View {
     var body: some View {
-        Color.gray
+        NavigationView {
+            LoginView()
+        }
     }
+}
+
+#Preview {
+    ProfileScreenView()
 }

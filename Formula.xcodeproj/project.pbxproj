@@ -50,6 +50,13 @@
 		E2B0C8062C2307F40024CF05 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B0C8052C2307F40024CF05 /* UINavigationController+Extension.swift */; };
 		E2B0C8082C2308130024CF05 /* CustomNavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B0C8072C2308130024CF05 /* CustomNavigationBarModifier.swift */; };
 		E2BF7BA92C245659002E702D /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BF7BA82C245659002E702D /* FilterView.swift */; };
+		E2BF7BAC2C2482FE002E702D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BF7BAB2C2482FE002E702D /* LoginView.swift */; };
+		E2BF7BAE2C248346002E702D /* RequirementText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BF7BAD2C248346002E702D /* RequirementText.swift */; };
+		E2BF7BB02C248420002E702D /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BF7BAF2C248420002E702D /* FormField.swift */; };
+		E2BF7BB22C2489CA002E702D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BF7BB12C2489CA002E702D /* LoginViewModel.swift */; };
+		E2BF7BB42C24903E002E702D /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BF7BB32C24903E002E702D /* KeyboardResponder.swift */; };
+		E2BF7BB62C24906F002E702D /* KeyboardAdaptive.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BF7BB52C24906F002E702D /* KeyboardAdaptive.swift */; };
+		E2BF7BB82C2494FB002E702D /* AdaptsToKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BF7BB72C2494FB002E702D /* AdaptsToKeyboard.swift */; };
 		E2C781DC2C22F32800149A18 /* FontsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C781DB2C22F32800149A18 /* FontsList.swift */; };
 		E2C781DD2C22F32800149A18 /* FontsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C781DB2C22F32800149A18 /* FontsList.swift */; };
 		E2D4F8702C0BAF6900949459 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = E2D4F86F2C0BAF6900949459 /* Nuke */; };
@@ -172,6 +179,13 @@
 		E2B0C8052C2307F40024CF05 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		E2B0C8072C2308130024CF05 /* CustomNavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarModifier.swift; sourceTree = "<group>"; };
 		E2BF7BA82C245659002E702D /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		E2BF7BAB2C2482FE002E702D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		E2BF7BAD2C248346002E702D /* RequirementText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementText.swift; sourceTree = "<group>"; };
+		E2BF7BAF2C248420002E702D /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
+		E2BF7BB12C2489CA002E702D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		E2BF7BB32C24903E002E702D /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
+		E2BF7BB52C24906F002E702D /* KeyboardAdaptive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAdaptive.swift; sourceTree = "<group>"; };
+		E2BF7BB72C2494FB002E702D /* AdaptsToKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToKeyboard.swift; sourceTree = "<group>"; };
 		E2C781DB2C22F32800149A18 /* FontsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsList.swift; sourceTree = "<group>"; };
 		E2D4F8772C0C597400949459 /* SettingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRow.swift; sourceTree = "<group>"; };
 		E2D4F8792C0C598F00949459 /* FeedbackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackManager.swift; sourceTree = "<group>"; };
@@ -372,6 +386,7 @@
 		E29716312C1EAA3F009E3D30 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E2BF7BAA2C2482F3002E702D /* Login */,
 				E25CC8092C0A5F9700FAD289 /* TabBar */,
 				E2D5F6992C0B305000E06E96 /* Main */,
 				E297162A2C1EA9F7009E3D30 /* RecipeDetail */,
@@ -388,8 +403,22 @@
 			children = (
 				E29716332C1EE97E009E3D30 /* ScaleButtonStyle.swift */,
 				E2B0C8072C2308130024CF05 /* CustomNavigationBarModifier.swift */,
+				E2BF7BB52C24906F002E702D /* KeyboardAdaptive.swift */,
+				E2BF7BB32C24903E002E702D /* KeyboardResponder.swift */,
+				E2BF7BB72C2494FB002E702D /* AdaptsToKeyboard.swift */,
 			);
 			path = Styles;
+			sourceTree = "<group>";
+		};
+		E2BF7BAA2C2482F3002E702D /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E2BF7BAB2C2482FE002E702D /* LoginView.swift */,
+				E2BF7BB12C2489CA002E702D /* LoginViewModel.swift */,
+				E2BF7BAD2C248346002E702D /* RequirementText.swift */,
+				E2BF7BAF2C248420002E702D /* FormField.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		E2D5F6992C0B305000E06E96 /* Main */ = {
@@ -698,12 +727,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2BF7BAE2C248346002E702D /* RequirementText.swift in Sources */,
 				E2D5F6A92C0B436B00E06E96 /* APIProviderErrors.swift in Sources */,
 				E297164A2C221AAC009E3D30 /* BublesProgressView.swift in Sources */,
 				E2D4F8782C0C597400949459 /* SettingRow.swift in Sources */,
 				E29716342C1EE97E009E3D30 /* ScaleButtonStyle.swift in Sources */,
 				E2D5F6AD2C0B43DC00E06E96 /* APIErrors.swift in Sources */,
 				E25CC80B2C0A5FA900FAD289 /* TabView.swift in Sources */,
+				E2BF7BB22C2489CA002E702D /* LoginViewModel.swift in Sources */,
 				E2D5F6902C0B2C8100E06E96 /* MainScreenView.swift in Sources */,
 				E2D5F6BE2C0B852100E06E96 /* URLRequest+cURL.swift in Sources */,
 				E2D5F6B62C0B47E000E06E96 /* RecipeSearchResult.swift in Sources */,
@@ -715,9 +746,11 @@
 				E2D4F8802C0C5A9D00949459 /* ShareSheetView.swift in Sources */,
 				E297162F2C1EAA2E009E3D30 /* RecipeDetailViewModel.swift in Sources */,
 				E29716252C1DEDF9009E3D30 /* OffsetObservingScrollView.swift in Sources */,
+				E2BF7BB02C248420002E702D /* FormField.swift in Sources */,
 				E2D5F6A72C0B432900E06E96 /* EndpointProtocol.swift in Sources */,
 				E2D5F6A02C0B31EA00E06E96 /* Color.swift in Sources */,
 				E2D4F8842C0C5B1F00949459 /* AppVersionRow.swift in Sources */,
+				E2BF7BB42C24903E002E702D /* KeyboardResponder.swift in Sources */,
 				E2D4F88C2C0C840100949459 /* Storage.swift in Sources */,
 				E25CC7E22C0A5F3B00FAD289 /* TabBarScreenView.swift in Sources */,
 				E2D5F68E2C0A6A7300E06E96 /* Tab.swift in Sources */,
@@ -729,6 +762,7 @@
 				E2D5F6982C0B2FFD00E06E96 /* SettingsScreenView.swift in Sources */,
 				E2D4F8862C0C5B6700949459 /* CreditsView.swift in Sources */,
 				E2D5F6C02C0B894A00E06E96 /* Data+JSON.swift in Sources */,
+				E2BF7BB62C24906F002E702D /* KeyboardAdaptive.swift in Sources */,
 				E2D5F6AF2C0B45D400E06E96 /* MainScreenViewModel.swift in Sources */,
 				E297162C2C1EAA19009E3D30 /* RecipeDetailView.swift in Sources */,
 				E2B0C8082C2308130024CF05 /* CustomNavigationBarModifier.swift in Sources */,
@@ -736,12 +770,14 @@
 				E2BF7BA92C245659002E702D /* FilterView.swift in Sources */,
 				E25CC7E02C0A5F3B00FAD289 /* FormulaApp.swift in Sources */,
 				E29716372C20BCD2009E3D30 /* StatedButton.swift in Sources */,
+				E2BF7BAC2C2482FE002E702D /* LoginView.swift in Sources */,
 				E29716472C22113A009E3D30 /* InfiniteProgressView.swift in Sources */,
 				E26AA2342C12EB6000779D30 /* FormulaAttributes.swift in Sources */,
 				E2B0C8062C2307F40024CF05 /* UINavigationController+Extension.swift in Sources */,
 				E2D5F6962C0B2FE200E06E96 /* ProfileScreenView.swift in Sources */,
 				E2D5F6BC2C0B5BBE00E06E96 /* RecipesList.swift in Sources */,
 				E2D5F6AB2C0B43B700E06E96 /* String+Extension.swift in Sources */,
+				E2BF7BB82C2494FB002E702D /* AdaptsToKeyboard.swift in Sources */,
 				E2D5F6942C0B2FA400E06E96 /* NewsScreenView.swift in Sources */,
 				E29716222C1B1057009E3D30 /* NeedleGenerated.swift in Sources */,
 				E2D5F6BA2C0B4F1400E06E96 /* RecipeCell.swift in Sources */,

@@ -9,9 +9,7 @@ import SwiftUI
 
 struct TabBarScreenView: View {
     @State var selectedIndex: Int = 0
-    
-    let searchRecipesProvider = APIProvider<RecipesEndpoint>()
-    
+        
     var currentTab: Tab {
         Tab(rawValue: selectedIndex) ?? .main
     }
