@@ -26,6 +26,9 @@
 		E26AA2372C12EEFF00779D30 /* FormulaAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26AA2332C12EB6000779D30 /* FormulaAttributes.swift */; };
 		E26AA2382C12EF0000779D30 /* FormulaAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26AA2332C12EB6000779D30 /* FormulaAttributes.swift */; };
 		E26AA2392C12EF0000779D30 /* FormulaAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26AA2332C12EB6000779D30 /* FormulaAttributes.swift */; };
+		E2780E132CCB6AD9000AFF34 /* WebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2780E122CCB6AD9000AFF34 /* WebImage.swift */; };
+		E2780E152CCB7229000AFF34 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2780E142CCB7229000AFF34 /* ImageLoader.swift */; };
+		E2780E172CCB7250000AFF34 /* ImageLoaderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2780E162CCB7250000AFF34 /* ImageLoaderError.swift */; };
 		E297161B2C1B0806009E3D30 /* NeedleFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = E297161A2C1B0806009E3D30 /* NeedleFoundation */; };
 		E297161D2C1B0806009E3D30 /* NeedleFoundationTest in Frameworks */ = {isa = PBXBuildFile; productRef = E297161C2C1B0806009E3D30 /* NeedleFoundationTest */; };
 		E29716202C1B0D45009E3D30 /* MainScreenComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E297161F2C1B0D45009E3D30 /* MainScreenComponent.swift */; };
@@ -166,6 +169,9 @@
 		E26AA2292C12EAEA00779D30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E26AA22B2C12EAEA00779D30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E26AA2332C12EB6000779D30 /* FormulaAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormulaAttributes.swift; sourceTree = "<group>"; };
+		E2780E122CCB6AD9000AFF34 /* WebImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImage.swift; sourceTree = "<group>"; };
+		E2780E142CCB7229000AFF34 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		E2780E162CCB7250000AFF34 /* ImageLoaderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderError.swift; sourceTree = "<group>"; };
 		E297161F2C1B0D45009E3D30 /* MainScreenComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenComponent.swift; sourceTree = "<group>"; };
 		E29716212C1B1057009E3D30 /* NeedleGenerated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeedleGenerated.swift; sourceTree = "<group>"; };
 		E29716242C1DEDF9009E3D30 /* OffsetObservingScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetObservingScrollView.swift; sourceTree = "<group>"; };
@@ -361,6 +367,16 @@
 			path = LIveWidget;
 			sourceTree = "<group>";
 		};
+		E2780E182CCB7262000AFF34 /* WebImage */ = {
+			isa = PBXGroup;
+			children = (
+				E2780E122CCB6AD9000AFF34 /* WebImage.swift */,
+				E2780E162CCB7250000AFF34 /* ImageLoaderError.swift */,
+				E2780E142CCB7229000AFF34 /* ImageLoader.swift */,
+			);
+			path = WebImage;
+			sourceTree = "<group>";
+		};
 		E29716292C1DF845009E3D30 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,6 +386,7 @@
 				E29716492C221AAC009E3D30 /* BublesProgressView.swift */,
 				E29716462C22113A009E3D30 /* InfiniteProgressView.swift */,
 				E2C781DB2C22F32800149A18 /* FontsList.swift */,
+				E2780E182CCB7262000AFF34 /* WebImage */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -737,6 +754,7 @@
 				E2BF7BB22C2489CA002E702D /* LoginViewModel.swift in Sources */,
 				E2D5F6902C0B2C8100E06E96 /* MainScreenView.swift in Sources */,
 				E2D5F6BE2C0B852100E06E96 /* URLRequest+cURL.swift in Sources */,
+				E2780E132CCB6AD9000AFF34 /* WebImage.swift in Sources */,
 				E2D5F6B62C0B47E000E06E96 /* RecipeSearchResult.swift in Sources */,
 				E2D4F88A2C0C622F00949459 /* View+Extension.swift in Sources */,
 				E29716202C1B0D45009E3D30 /* MainScreenComponent.swift in Sources */,
@@ -758,6 +776,7 @@
 				E29716442C21D668009E3D30 /* HeartView.swift in Sources */,
 				E2D5F6A52C0B42E500E06E96 /* APIProvider.swift in Sources */,
 				E2D5F6B12C0B45EE00E06E96 /* RecipesEndpoint.swift in Sources */,
+				E2780E152CCB7229000AFF34 /* ImageLoader.swift in Sources */,
 				E2D5F68C2C0A63D600E06E96 /* TabBarItem.swift in Sources */,
 				E2D5F6982C0B2FFD00E06E96 /* SettingsScreenView.swift in Sources */,
 				E2D4F8862C0C5B6700949459 /* CreditsView.swift in Sources */,
@@ -770,6 +789,7 @@
 				E2BF7BA92C245659002E702D /* FilterView.swift in Sources */,
 				E25CC7E02C0A5F3B00FAD289 /* FormulaApp.swift in Sources */,
 				E29716372C20BCD2009E3D30 /* StatedButton.swift in Sources */,
+				E2780E172CCB7250000AFF34 /* ImageLoaderError.swift in Sources */,
 				E2BF7BAC2C2482FE002E702D /* LoginView.swift in Sources */,
 				E29716472C22113A009E3D30 /* InfiniteProgressView.swift in Sources */,
 				E26AA2342C12EB6000779D30 /* FormulaAttributes.swift in Sources */,

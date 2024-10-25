@@ -14,20 +14,18 @@ struct RecipeDetailView: View {
     var body: some View {
         ScrollView {
             VStack {
-                LazyImage(
-                    url: URL(string: model.recipe.image),
-                    transaction: Transaction(animation: .default)
-                ) { state in
-                    if let image = state.image {
-                        image
-                            .resizable()
-                            .scaledToFill()
-                    } else {
-                        Rectangle().fill(Color.black.opacity(0.1))
-                    }
-                }
-                .frame(height: 200)
-                .clipped()
+                WebImage(url: URL(string: model.recipe.image))
+                    .scaledToFit()
+                    .clipShape(
+                        Circle()
+                    )
+                    .overlay(content: {
+                        Circle()
+                            .stroke(style: .init(lineWidth: 3))
+                            .fill(Color.white)
+                    })
+                    .shadow(radius: 10)
+                    .frame(height: 270)
                 
                 Text(model.recipe.label)
                     .font(.system(.title, design: .rounded))
@@ -55,7 +53,7 @@ struct RecipeDetailView: View {
                     .font(.callout)
                     .padding()
             }
-            .padding(.init(top: 0, leading: 0, bottom: 80, trailing: 0))
+            .padding(.init(top: 20, leading: 0, bottom: 80, trailing: 0))
             .setNavigationBar(title: "Recipe Details")
             .toolbar(content: {
                 ToolbarItem(placement: .topBarTrailing) {
